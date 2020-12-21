@@ -11,12 +11,12 @@ def student_new(request):
 			student = form.save(commit=False)
 			student.author = request.student
 			student.published_date = timezone.now()
-			student.slug = post.title
+			student.slug = student.name
 			student.status = 'published'
 			form.save()
 			return redirect('student_details', pk=student.pk)
 	else:
 		form = StudentForm()
-	students = Student.objects.all().filter(published=True).order_by('name')
+	students = Student.objects.filter(status='active').order_by('name')
 #	students = Student.objects.filter(published=True).order_by('name')
 	return render(request, 'studentapp/student_list.html', {'form':form, 'students':students})

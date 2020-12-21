@@ -9,23 +9,23 @@ class PublishedManager(models.Manager):
 		return super(PublishedManager,self).get_queryset().filter(status='published')
 
 class StudentClassInfo(models.Model):
-	class_name = models.CharField(max_length=20)
+	class_name = models.IntegerField()
 	class_short_form = models.CharField(max_length=10)
 
 	def __str__(self):
 		return self.class_name
 
 
-class StudentSectionInfo(models.Model):
-	section_name = models.CharField(max_length=20)
+# class StudentSectionInfo(models.Model):
+# 	section_name = models.CharField(max_length=20)
 
-	def __str__(self):
-		return self.section_name
+# 	def __str__(self):
+# 		return self.section_name
 
 class Student(models.Model):
 	STATUS_CHOICES = (
 		('draft', 'Draft'),
-		('published', 'Published'),
+		('active', 'Active'),
 	)
 	name = models.CharField(max_length=100)
 	age = models.IntegerField()
