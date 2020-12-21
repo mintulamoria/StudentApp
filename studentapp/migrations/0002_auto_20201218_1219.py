@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='student',
             name='published_date',
-            field=models.DateTimeField(auto_now=True, default=22),
+            field=models.DateTimeField(auto_now=True),
             preserve_default=False,
         ),
         migrations.AlterUniqueTogether(

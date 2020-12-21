@@ -26,15 +26,22 @@
         <table style="width:100%">
             <tr>
                 <th>Name</th>
+                <th>Class</th>
+                <th>Gender</th>
                 <th>Father Name</th>
                 <th>Mother Name</th>
+                <th>Age</th>
+
             </tr>
             
             {% for student in students %}
                 <tr>
                     <th><a href="#">{{ student.name }}</a></th>
+                    <th><a herf="#">{{ student.class_type }}</a></th>
+                    <th><a herf="#">{{ student.gender }}</a></th>
                     <th><a href="#">{{ student.father_name }}</a></th>
                     <th><a href="#">{{ student.mother_name }}</a></th>
+                    <th><a herf="#">{{ student.age }}</a></th>
                 </tr>
             {% endfor %}
             </table>

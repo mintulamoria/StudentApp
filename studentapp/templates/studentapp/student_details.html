@@ -1,0 +1,72 @@
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-header">
+                 <i class="fa fa-align-justify"></i> Students Academic Info
+            </div>
+            <div class="card-body">
+                <tbody>
+                    <tr>
+                        <td>Academic Year: {{ student.academic_year }}</td>
+                        <br>
+                        <td>Admission Date: {{ student.admission_date }}</td>
+                        <br>
+                        <td>Class: {{ student.class_type }}</td>
+                        <br>
+                        <td>Section: {{ student.section_type }}</td>
+                        <br>
+                    </tr>
+                </tbody>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-header">
+                 <i class="fa fa-align-justify"></i> Students Personal Info
+            </div>
+            <div class="card-body">
+
+                <h6>{{ student.name }}</h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                 <i class="fa fa-align-justify"></i> Fathers Info
+            </div>
+            <div class="card-body">
+                <tbody>
+                    <tr>
+                        <td>Fathers Name: {{ student.fathers_name }}</td>
+                    </tr>
+                </tbody>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                 <i class="fa fa-align-justify"></i> Mothers Info
+            </div>
+            <div class="card-body">
+                <tbody>
+                    <tr>
+                        <td>Mothers Name: {{ student.mothers_name }}</td>
+                    </tr>
+                </tbody>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
