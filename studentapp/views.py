@@ -20,3 +20,21 @@ def student_new(request):
 	students = Student.objects.filter(status='active').order_by('name')
 #	students = Student.objects.filter(published=True).order_by('name')
 	return render(request, 'studentapp/student_list.html', {'form':form, 'students':students})
+
+def student_edit(request, pk):
+    student_edit = Student.objects.get(id=pk)
+    edit_forms = CreateStudent(instance=student_edit)
+
+    if request.method == "POST":
+        edit_forms = CreateStudent(request.POST, instance=student_edit)
+
+        if edit_forms.is_valid():
+            edit_forms.save()
+            messages.success(request, "Edit Student Info Successfully!")
+            return redirect("student_list")
+
+    context = {
+        "edit_forms": edit_forms
+    }
+    return render(request, "students/student_edit.html", context)
+

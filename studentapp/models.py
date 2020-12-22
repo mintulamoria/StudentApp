@@ -9,18 +9,12 @@ class PublishedManager(models.Manager):
 		return super(PublishedManager,self).get_queryset().filter(status='published')
 
 class StudentClassInfo(models.Model):
-	class_name = models.IntegerField()
+	class_name = models.CharField(max_length=20)
 	class_short_form = models.CharField(max_length=10)
 
 	def __str__(self):
 		return self.class_name
 
-
-# class StudentSectionInfo(models.Model):
-# 	section_name = models.CharField(max_length=20)
-
-# 	def __str__(self):
-# 		return self.section_name
 
 class Student(models.Model):
 	STATUS_CHOICES = (
@@ -28,6 +22,7 @@ class Student(models.Model):
 		('active', 'Active'),
 	)
 	name = models.CharField(max_length=100)
+#	dob = models.DateField()
 	age = models.IntegerField()
 	gender_choice = (
 			("male", "Male"), 
@@ -43,8 +38,21 @@ class Student(models.Model):
 	published_date = models.DateTimeField(auto_now=True)
 	status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
 
-	# class Meta: 
-	# 	ordering = ('-publish',)
+	
+	# def calculate_age(self):
+	# 	today = date.today()
+
+	# 	try: 
+	# 		birthday = self.dob.replace(year=today.year)
+ #        # raised when birth date is February 29 and the current year is not a leap year
+	# 	except ValueError:
+	# 		birthday = self.dob.replace(year=today.year, day=born.day-1)
+
+	# 	if birthday > today:
+	# 		return today.year - born.year - 1
+	# 	else:
+	# 		return today.year - born.year
+
 
 	class Meta:
 		unique_together = ('name', 'father_name', 'mother_name',)
