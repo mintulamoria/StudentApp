@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teacher App</title>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: 5px;
+          text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div class="container my-3">
+<h3>Teacher Form</h3>
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Submit</button>
+</form>
+</div>
+    <div>
+        <table style="width:100%">
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+
+            </tr>
+            
+            {% for teacher in teachers %}
+                <tr>
+                    <th><a href="#">{{ teacher.name }}</a></th>
+                    <th><a herf="#">{{ teacher.gender }}</a></th>
+                    <th><a herf="#">{{ teacher.age }}</a></th>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>	
+
+<!--<input class="btn btn-primary" type="submit" value="Save" />

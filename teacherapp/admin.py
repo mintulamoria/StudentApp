@@ -5,4 +5,4 @@ from .models import *
 
 admin.site.register(TeacherDeptInfo)
 admin.site.register(TeacherSubInfo)
-admin.site.register(TeacherInfo)
+admin.site.register(Teacher)

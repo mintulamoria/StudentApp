@@ -12,7 +12,7 @@ class TeacherSubInfo(models.Model):
 	def __str__(self):
 		return self.sub_name
 
-class TeacherInfo(models.Model):
+class Teacher(models.Model):
 	name = models.CharField(max_length=100)
 	email = models.EmailField(unique=True)
 	age = models.IntegerField()
