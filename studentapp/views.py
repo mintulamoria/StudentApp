@@ -14,7 +14,7 @@ def student_new(request):
 			student.slug = student.name
 			student.status = 'published'
 			form.save()
-			return redirect('student_details', pk=student.pk)
+			return redirect('student_list', pk=student.pk)
 	else:
 		form = StudentForm()
 	students = Student.objects.filter(status='active').order_by('name')

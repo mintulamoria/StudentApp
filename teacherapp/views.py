@@ -24,7 +24,6 @@ def teacher_new(request):
 	else:
 		form = TeacherForm()
 	teachers = Teacher.objects.all().order_by('name')
-#	students = Student.objects.filter(published=True).order_by('name')
 	return render(request, 'teacherapp/teacher_list.html', {'form':form, 'teachers':teachers})
 
 

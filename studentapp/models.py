@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
-
+from datetime import date
 
 
 class PublishedManager(models.Manager):
@@ -22,7 +22,7 @@ class Student(models.Model):
 		('active', 'Active'),
 	)
 	name = models.CharField(max_length=100)
-#	dob = models.DateField()
+	dob = models.DateField()
 	age = models.IntegerField()
 	gender_choice = (
 			("male", "Male"), 
@@ -38,24 +38,12 @@ class Student(models.Model):
 	published_date = models.DateTimeField(auto_now=True)
 	status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
 
-	
-	# def calculate_age(self):
-	# 	today = date.today()
+	def calculate_age(self):
+		import datetime
+		return int((datetime.datetime.now() - self.birthday).days / 365.25  )	
 
-	# 	try: 
-	# 		birthday = self.dob.replace(year=today.year)
- #        # raised when birth date is February 29 and the current year is not a leap year
-	# 	except ValueError:
-	# 		birthday = self.dob.replace(year=today.year, day=born.day-1)
-
-	# 	if birthday > today:
-	# 		return today.year - born.year - 1
-	# 	else:
-	# 		return today.year - born.year
-
-
-	class Meta:
-		unique_together = ('name', 'father_name', 'mother_name',)
+class Meta:
+	unique_together = ('name', 'father_name', 'mother_name',)
 
 	def publish(self):
 		self.published_date = timezone.now()
