@@ -8,13 +8,13 @@ def student_new(request):
 	if request.method == 'POST':
 		form = StudentForm(request.POST)
 		if form.is_valid():
-			student = form.save(commit=False)
-			student.author = request.student
-			student.published_date = timezone.now()
-			student.slug = student.name
-			student.status = 'published'
+			# student = form.save(commit=False)
+			# student.name = request.name
+			# student.published_date = timezone.now()
+			# student.slug = student.name
+			# student.status = 'published'
 			form.save()
-			return redirect('student_list', pk=student.pk)
+#			return redirect('student_list', pk=student.pk)
 	else:
 		form = StudentForm()
 	students = Student.objects.filter(status='active').order_by('name')

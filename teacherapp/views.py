@@ -14,13 +14,8 @@ def teacher_new(request):
 	if request.method == 'POST':
 		form = TeacherForm(request.POST)
 		if form.is_valid():
-			teacher = form.save(commit=False)
-			teacher.author = request.teacher
-			teacher.published_date = timezone.now()
-			teacher.slug = teacher.name
-			teacher.status = 'published'
 			form.save()
-			return redirect('teacher_details', pk=teacher.pk)
+			# return redirect('teacher_details', pk=teacher.pk)
 	else:
 		form = TeacherForm()
 	teachers = Teacher.objects.all().order_by('name')

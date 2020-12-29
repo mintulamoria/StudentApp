@@ -17,10 +17,7 @@ class StudentClassInfo(models.Model):
 
 
 class Student(models.Model):
-	STATUS_CHOICES = (
-		('draft', 'Draft'),
-		('active', 'Active'),
-	)
+	
 	name = models.CharField(max_length=100)
 	dob = models.DateField()
 	age = models.IntegerField()
@@ -36,8 +33,15 @@ class Student(models.Model):
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
 	published_date = models.DateTimeField(auto_now=True)
+	STATUS_CHOICES = (
+		('draft', 'Draft'),
+		('active', 'Active'),
+	)
 	status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
 
+	def __str__(self):
+		return self.name
+	
 	def calculate_age(self):
 		import datetime
 		return int((datetime.datetime.now() - self.birthday).days / 365.25  )	
@@ -45,12 +49,10 @@ class Student(models.Model):
 class Meta:
 	unique_together = ('name', 'father_name', 'mother_name',)
 
+
 	def publish(self):
 		self.published_date = timezone.now()
 		self.save()
-
-	def __str__(self):
-		return self.name
 
 	def get_absolute_url(self):
 		return reverse('student_detail',kwargs={'slug':str(self.slug)})
