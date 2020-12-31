@@ -27,7 +27,7 @@ class Teacher(models.Model):
 	age = models.IntegerField()
 	cover = models.ImageField(upload_to='images/', blank=True)
 	gender_choice = (
-		("male", "Male"),
+		("Male", "Male"),
 		("Female", "Female"),
 	)
 	gender = models.CharField(choices=gender_choice, max_length=10)
