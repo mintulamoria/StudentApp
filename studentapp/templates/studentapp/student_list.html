@@ -15,6 +15,9 @@
 </head>
 <body>
 <div class="container my-3">
+{% if student.cover %}
+<img src="{{ student.cover.url}}" alt="{{ student.cover }}">
+{% endif %}
 <h3>Student Form</h3>
 <form method="POST">
     {% csrf_token %}
@@ -30,11 +33,10 @@
                 <th>Gender</th>
                 <th>Father Name</th>
                 <th>Mother Name</th>
+                <th>Cover</th>
                 <th>Age</th>
                 <th>DOB</th>
-
             </tr>
-            
             {% for student in students %}
                 <tr>
                     <th><a href="#">{{ student.name }}</a></th>
@@ -42,6 +44,7 @@
                     <th><a herf="#">{{ student.gender }}</a></th>
                     <th><a href="#">{{ student.father_name }}</a></th>
                     <th><a href="#">{{ student.mother_name }}</a></th>
+                    <th><a herf="#">{{ student.cover }}</a></th>
                     <th><a herf="#">{{ student.age }}</a></th>
                     <th><a herf="#">{{ student.dob }}</a></th>
                 </tr>

@@ -8,11 +8,6 @@ def student_new(request):
 	if request.method == 'POST':
 		form = StudentForm(request.POST)
 		if form.is_valid():
-			# student = form.save(commit=False)
-			# student.name = request.name
-			# student.published_date = timezone.now()
-			# student.slug = student.name
-			# student.status = 'published'
 			form.save()
 #			return redirect('student_list', pk=student.pk)
 	else:
@@ -22,19 +17,18 @@ def student_new(request):
 	return render(request, 'studentapp/student_list.html', {'form':form, 'students':students})
 
 def student_edit(request, pk):
-    student_edit = Student.objects.get(id=pk)
-    edit_forms = CreateStudent(instance=student_edit)
+	student_edit = Student.objects.get(id=pk)
+	edit_forms = CreateStudent(instance=student_edit)
 
-    if request.method == "POST":
-        edit_forms = CreateStudent(request.POST, instance=student_edit)
+	if request.method == "POST":
+		edit_forms = CreateStudent(request.POST, instance=student_edit)
 
-        if edit_forms.is_valid():
-            edit_forms.save()
-            messages.success(request, "Edit Student Info Successfully!")
-            return redirect("student_list")
+		if edit_forms.is_valid():
+			edit_forms.save()
+			messages.success(request, "Edit Student Info Successfully!")
+			return redirect("student_list")
 
-    context = {
-        "edit_forms": edit_forms
-    }
-    return render(request, "students/student_edit.html", context)
-
+	context = {
+		"edit_forms": edit_forms
+	}
+	return render(request, "students/student_edit.html", context)

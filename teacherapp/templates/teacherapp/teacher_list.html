@@ -28,7 +28,10 @@
                 <th>Name</th>
                 <th>Gender</th>
                 <th>Age</th>
-
+                <th>Cover</th>
+                {% if teacher.cover %}
+                <img src="{{ teacher.cover.url}}" alt="{{ teacher.cover }}">
+                {% endif %}
             </tr>
             
             {% for teacher in teachers %}
@@ -36,6 +39,7 @@
                     <th><a href="#">{{ teacher.name }}</a></th>
                     <th><a herf="#">{{ teacher.gender }}</a></th>
                     <th><a herf="#">{{ teacher.age }}</a></th>
+                    <th><a herf="#">{{ teacher.cover }}</a></th>
                 </tr>
             {% endfor %}
             </table>

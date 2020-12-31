@@ -5,11 +5,6 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 
 
-# def teacher_list(request):
-# 	teachers = TeacherInfo.object.all()
-# 	paginator = Paginator(teachers, 1)
-
-
 def teacher_new(request):
 	if request.method == 'POST':
 		form = TeacherForm(request.POST)
@@ -20,7 +15,3 @@ def teacher_new(request):
 		form = TeacherForm()
 	teachers = Teacher.objects.all().order_by('name')
 	return render(request, 'teacherapp/teacher_list.html', {'form':form, 'teachers':teachers})
-
-
-
-# Create your views here.

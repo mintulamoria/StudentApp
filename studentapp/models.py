@@ -17,7 +17,7 @@ class StudentClassInfo(models.Model):
 
 
 class Student(models.Model):
-	
+
 	name = models.CharField(max_length=100)
 	dob = models.DateField()
 	age = models.IntegerField()
@@ -29,6 +29,7 @@ class Student(models.Model):
 	class_type = models.ForeignKey(StudentClassInfo, on_delete=models.CASCADE)
 	father_name = models.CharField(max_length=100)
 	mother_name = models.CharField(max_length=100)
+	cover = models.ImageField(upload_to='images/', blank=True)
 	address = models.TextField(max_length=200)
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
