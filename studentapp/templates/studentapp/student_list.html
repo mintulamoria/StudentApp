@@ -14,7 +14,7 @@
         }
         th, td {
           padding: 5px;
-          text-align: left;
+          text-align: left; 
         }
     </style>
 </head>
@@ -36,9 +36,6 @@
                 <th>Father Name</th>
                 <th>Mother Name</th>
                 <th>Cover</th>
-                {% if student.cover %}
-                <img src="{{ student.cover.url }}" alt="{{ student.cover }}">
-                {% endif %}
                 <th>Age</th>
                 <th>DOB</th>
             </tr>
@@ -50,6 +47,7 @@
                     <th><a href="#">{{ student.father_name }}</a></th>
                     <th><a href="#">{{ student.mother_name }}</a></th>
                     <th><a herf="#">{{ student.cover }}</a></th>
+                    <td><img src="{{ student.cover.url }}" alt="{{ student.cover }}"></img></td>
                     <th><a herf="#">{{ student.age }}</a></th>
                     <th><a herf="#">{{ student.dob }}</a></th>
                 </tr>
