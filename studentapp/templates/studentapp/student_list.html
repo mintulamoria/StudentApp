@@ -19,6 +19,22 @@
     </style>
 </head>
 <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">School Managment</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">Home</a></li>
+        </ul>
+        <form class="navbar-form navbar-left" action="/action_page.php">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search" name="search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+    </nav>
 <div class="container my-3">
 <h3>Student Form</h3>
 <form method="POST">
@@ -38,18 +54,19 @@
                 <th>Cover</th>
                 <th>Age</th>
                 <th>DOB</th>
+                <th>Status</th>
             </tr>
             {% for student in students %}
                 <tr>
                     <th><a href="#">{{ student.name }}</a></th>
-                    <th><a herf="#">{{ student.class_type }}</a></th>
-                    <th><a herf="#">{{ student.gender }}</a></th>
-                    <th><a href="#">{{ student.father_name }}</a></th>
-                    <th><a href="#">{{ student.mother_name }}</a></th>
-                    <th><a herf="#">{{ student.cover }}</a></th>
-                    <td><img src="{{ student.cover.url }}" alt="{{ student.cover }}"></img></td>
-                    <th><a herf="#">{{ student.age }}</a></th>
-                    <th><a herf="#">{{ student.dob }}</a></th>
+                    <th>{{ student.class_type }}</th>
+                    <th>{{ student.gender }}</th>
+                    <th>{{ student.father_name }}</th>
+                    <th>{{ student.mother_name }}</th>
+                    <td><img src="{{ student.cover.url }}" alt="{{ student.cover }}" border=3 height=100 width=100></img></td>
+                    <th>{{ student.age }}</th>
+                    <th>{{ student.dob }}</th>
+                    <th>{{ student.status}}</th>
                 </tr>
             {% endfor %}
         </table>

@@ -22,8 +22,8 @@ class Student(models.Model):
 	dob = models.DateField()
 	age = models.IntegerField()
 	gender_choice = (
-			("male", "Male"), 
-			("female", "Female"),
+			("Male", "Male"), 
+			("Female", "Female"),
 	)
 	gender = models.CharField(choices=gender_choice, max_length=10)
 	class_type = models.ForeignKey(StudentClassInfo, on_delete=models.CASCADE)
@@ -42,13 +42,13 @@ class Student(models.Model):
 
 	def __str__(self):
 		return self.name
-	
-	def calculate_age(self):
-		import datetime
-		return int((datetime.datetime.now() - self.birthday).days / 365.25  )	
 
 class Meta:
 	unique_together = ('name', 'father_name', 'mother_name',)
+	
+	def calculate_age(self):
+		import datetime
+		return int((datetime.datetime.now() - self.birthday).days / 365.25  )
 
 
 	def publish(self):

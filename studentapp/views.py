@@ -32,3 +32,7 @@ def student_edit(request, pk):
 		"edit_forms": edit_forms
 	}
 	return render(request, "students/student_edit.html", context)
+
+def student_details(request, pk):
+    students = get_object_or_404(Student, pk=pk)
+    return render(request, 'studentapp/student_details.html', {'students': students})

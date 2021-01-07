@@ -7,4 +7,4 @@ class StudentForm(forms.ModelForm):
 
 	class Meta:
 		model = Student
-		fields = ('name', 'father_name', 'mother_name', 'cover', 'dob', 'age', 'class_type', 'gender', 'address')
+		fields = ('name', 'father_name', 'mother_name', 'cover', 'dob', 'age', 'class_type', 'gender', 'status', 'address')

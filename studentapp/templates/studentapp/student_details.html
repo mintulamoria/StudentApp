@@ -1,72 +1,38 @@
-{% load static %}
-
-{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <div class="row">
     <div class="col-lg-7">
         <div class="card">
             <div class="card-header">
-                 <i class="fa fa-align-justify"></i> Students Academic Info
+                 <i class="fa fa-align-justify"></i> Students Details
             </div>
             <div class="card-body">
                 <tbody>
                     <tr>
-                        <td>Academic Year: {{ student.academic_year }}</td>
-                        <br>
-                        <td>Admission Date: {{ student.admission_date }}</td>
-                        <br>
-                        <td>Class: {{ student.class_type }}</td>
-                        <br>
-                        <td>Section: {{ student.section_type }}</td>
-                        <br>
+                       {% for student in students %}
+                        <tr>
+                        <td><a herf="{{ student.name }}" alt="{{ student_details.html }}"></td>
+                        <th><a herf="/">{{ student.class_type }}</a></th>
+                        <th><a herf="#">{{ student.gender }}</a></th>
+                        <th><a href="#">{{ student.father_name }}</a></th>
+                        <th><a href="#">{{ student.mother_name }}</a></th>
+                        <td><img src="{{ student.cover.url }}" alt="{{ student.cover }}" border=3 height=100 width=100></img></td>
+                        <th><a herf="#">{{ student.age }}</a></th>
+                        <th><a herf="#">{{ student.dob }}</a></th>
+                        <th><a herf="#">{{ student.status}}</a></th>
                     </tr>
-                </tbody>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-5">
-        <div class="card">
-            <div class="card-header">
-                 <i class="fa fa-align-justify"></i> Students Personal Info
-            </div>
-            <div class="card-body">
-
-                <h6>{{ student.name }}</h6>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-lg-6">
-        <div class="card">
-            <div class="card-header">
-                 <i class="fa fa-align-justify"></i> Fathers Info
-            </div>
-            <div class="card-body">
-                <tbody>
-                    <tr>
-                        <td>Fathers Name: {{ student.fathers_name }}</td>
-                    </tr>
-                </tbody>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-6">
-        <div class="card">
-            <div class="card-header">
-                 <i class="fa fa-align-justify"></i> Mothers Info
-            </div>
-            <div class="card-body">
-                <tbody>
-                    <tr>
-                        <td>Mothers Name: {{ student.mothers_name }}</td>
+            {% endfor %}
                     </tr>
                 </tbody>
             </div>
         </div>
     </div>
 </div>
-
-{% endblock %}
-
