@@ -45,16 +45,13 @@
                 <th>Gender</th>
                 <th>Age</th>
                 <th>Cover</th>
-                {% if teacher.cover %}
-                <img src="{{ teacher.cover.url}}" alt="{{ teacher.cover }}">
-                {% endif %}
             </tr>
             
             {% for teacher in teachers %}
                 <tr>
                     <th><a href="#">{{ teacher.name }}</a></th>
-                    <th><a herf="#">{{ teacher.gender }}</a></th>
-                    <th><a herf="#">{{ teacher.age }}</a></th>
+                    <th>{{ teacher.gender }}</th>
+                    <th>{{ teacher.age }}</th>
                     <td><img src="{{ teacher.cover.url }}" alt="{{ teacher.cover }}" border=3 height=100 width=100></img></td>
                 </tr>
             {% endfor %}
